@@ -35,7 +35,19 @@ let six=[];for(let i=5;i>=0;i--){let d=new Date(m+'-01T00:00:00');d.setMonth(d.g
 function tx(x){return `<div class="tx"><div class="ico">${icon(x.category)}</div><div class="txmain"><b>${safe(x.merchant)}</b><small>${safe(x.app)} · ${safe(x.category)}</small></div><div class="amt ${x.type==='Received'?'green':''}">${x.type==='Received'?'+':'−'}${fmt(x.amount)}<small>${safe(x.date)}</small></div></div>`}
 function renderRows(){let q=$('search').value.toLowerCase(),a=data.filter(x=>(filter==='All'||x.type===filter||x.category===filter)&&[x.merchant,x.app,x.category,x.notes].join(' ').toLowerCase().includes(q)).sort((x,y)=>y.date.localeCompare(x.date));$('rows').innerHTML=a.map(x=>`<tr><td><b>${safe(x.merchant)}</b></td><td>${x.date}</td><td>${safe(x.app)}</td><td>${safe(x.category)}</td><td class="${x.type==='Received'?'green':''}">${x.type==='Received'?'+':'−'}${fmt(x.amount)}</td><td><button class="link" onclick="editTx('${x.id}')">Edit</button> <button class="link" onclick="delTx('${x.id}')">×</button></td></tr>`).join('');$('noRows').hidden=!!a.length}
 function renderYear(){let y=$('year').value||new Date().getFullYear(),a=data.filter(x=>x.date.startsWith(y)),sp=sum(a,'Paid'),rc=sum(a,'Received');$('ys').textContent=fmt(sp);$('yr').textContent=fmt(rc);$('yn').textContent=fmt(rc-sp);let ms=Array.from({length:12},(_,i)=>{let k=y+'-'+String(i+1).padStart(2,'0'),l=a.filter(x=>month(x.date)===k);return {k,n:new Date(k+'-01T00:00:00').toLocaleDateString('en-IN',{month:'short'}),s:sum(l,'Paid'),r:sum(l,'Received')}}),max=Math.max(1,...ms.map(x=>x.s));$('yearChart').innerHTML=ms.map(x=>`<div class="col"><div class="track"><div class="fill" style="height:${x.s/max*100}%"></div></div><small>${x.n}</small></div>`).join('');$('monthRows').innerHTML=ms.map(x=>`<div class="barlabel" style="padding:9px 0;border-bottom:1px solid var(--line)"><span>${new Date(x.k+'-01').toLocaleDateString('en-IN',{month:'long'})}</span><span>Spent <b>${fmt(x.s)}</b> · Received <b class="green">${fmt(x.r)}</b></span></div>`).join('');bars('yearCats',group(a,'category'));bars('yearApps',group(a,'app'));bars('merchants',group(a,'merchant').slice(0,8))}
-function go(id){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.bottom button').forEach(x=>x.classList.toggle('active',x.dataset.go===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='analytics')renderYear()}
+window.go = function(id) {
+  document.querySelectorAll('.view').forEach(x => {
+    x.classList.toggle('active', x.id === id);
+  });
+
+  document.querySelectorAll('.bottom button').forEach(x => {
+    x.classList.toggle('active', x.dataset.go === id);
+  });
+
+  window.scrollTo({top: 0, behavior: 'smooth'});
+
+  if (id === 'analytics') renderYear();
+};
 function resetForm(){ $('form').reset();$('edit').value='';$('date').value=new Date().toISOString().slice(0,10);$('formTitle').textContent='Add a transaction';$('save').textContent='Save transaction'}
 function editTx(id){let x=data.find(t=>t.id===id);if(!x)return;go('add');$('edit').value=id;['type','amount','merchant','date','app','category','notes'].forEach(k=>$(k).value=x[k]||'');$('formTitle').textContent='Edit transaction';$('save').textContent='Update transaction'}
 function delTx(id){if(confirm('Delete this transaction?')){data=data.filter(x=>x.id!==id);save()}}
