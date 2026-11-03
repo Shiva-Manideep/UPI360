@@ -1,0 +1,16 @@
+{
+  "name": "UPI360 Personal Expense Tracker",
+  "short_name": "UPI360",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#071b19",
+  "theme_color": "#071b19",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
