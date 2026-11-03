@@ -1,105 +1,626 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#071b19"><meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="UPI360"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon.svg">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#071b19">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="UPI360">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon.svg">
 <title>UPI360 — Personal Finance</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 :root{--bg:#071b19;--card:#0e2925;--card2:#143730;--line:#ffffff18;--txt:#f2fff8;--muted:#91aaa0;--mint:#5cf0b2;--lime:#c5f36b;--red:#ff8585}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0,#0d4a3b55,transparent 35%),var(--bg);color:var(--txt);font:14px 'DM Sans',sans-serif}.wrap{max-width:1180px;margin:auto;padding:22px 22px 95px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px}.brand{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border-radius:16px;background:linear-gradient(145deg,#5cf0b2,#087b61 65%,#031b19);display:grid;place-items:center;box-shadow:0 8px 25px #20d99a44;font:800 17px 'Space Grotesk';color:#05251c;position:relative}.logo:after{content:"";position:absolute;inset:7px;border:2px solid #eafff4;border-right-color:transparent;border-radius:50%;transform:rotate(-30deg)}.brand b{font:700 25px 'Space Grotesk';letter-spacing:-1px}.brand b span{color:var(--mint)}.tag{font-size:10px;color:var(--muted);letter-spacing:1.6px}.privacy{font-size:10px;color:#b8f8dc;border:1px solid #42dca055;background:#0e352b;padding:9px 12px;border-radius:30px}.btn{border:0;border-radius:11px;padding:11px 15px;background:linear-gradient(135deg,var(--mint),#2bd99a);color:#05271e;font-weight:700;cursor:pointer}.btn.alt{background:#1b443a;color:var(--txt);border:1px solid var(--line)}.btn.red{background:#542c32;color:#ffe1e1}.greet{display:flex;justify-content:space-between;align-items:end;margin:12px 0 20px;gap:12px}.eyebrow{color:var(--mint);font-size:10px;letter-spacing:2px;font-weight:700}.greet h1{font:600 32px 'Space Grotesk';margin:7px 0}.muted{color:var(--muted)}select,input,textarea{background:#081f1c;color:var(--txt);border:1px solid var(--line);padding:11px;border-radius:10px;width:100%;font:inherit}select.period{width:auto;min-width:180px}.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}.card{background:linear-gradient(145deg,#12342e,#0a2521);border:1px solid var(--line);border-radius:18px;padding:17px;box-shadow:0 15px 40px #0002}.kpi{min-height:125px}.klabel{font-size:11px;color:var(--muted)}.value{font:700 27px 'Space Grotesk';margin:13px 0 6px}.green{color:var(--mint)}.redtxt{color:var(--red)}.grid{display:grid;grid-template-columns:1.4fr 1fr;gap:14px}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px}.head h2{font:600 16px 'Space Grotesk';margin:0}.chart{height:175px;display:flex;align-items:end;gap:12px;border-bottom:1px solid var(--line);padding-top:10px}.col{height:100%;flex:1;display:flex;flex-direction:column;justify-content:end;align-items:center;gap:6px}.track{height:140px;width:min(100%,32px);background:#ffffff0b;border-radius:7px 7px 2px 2px;display:flex;align-items:end;overflow:hidden}.fill{width:100%;background:linear-gradient(var(--mint),#118b65);border-radius:7px 7px 0 0;min-height:2px}.col small{font-size:10px;color:var(--muted)}.bars{display:grid;gap:13px}.barrow{display:grid;gap:6px}.barlabel{display:flex;justify-content:space-between;font-size:12px}.barbg{height:7px;background:#ffffff12;border-radius:8px;overflow:hidden}.barfg{height:100%;background:linear-gradient(90deg,#20c98b,var(--lime));border-radius:8px}.tx{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.tx:last-child{border:0}.ico{width:38px;height:38px;background:#ffffff10;border-radius:12px;display:grid;place-items:center;font-size:18px}.txmain{flex:1;min-width:0}.txmain b{display:block;font-size:13px}.txmain small,.amt small{color:var(--muted);font-size:10px}.amt{text-align:right;font-weight:700;white-space:nowrap}.view{display:none}.view.active{display:block}.tabs{display:flex;gap:5px;background:#061e1a;border:1px solid var(--line);padding:5px;border-radius:12px}.tabs button{background:none;border:0;color:var(--muted);padding:8px 13px;border-radius:8px;cursor:pointer}.tabs button.active{background:#1b5542;color:var(--mint)}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:grid;gap:6px}.field label{font-size:10px;color:var(--muted);letter-spacing:.5px}.full{grid-column:1/-1}.formrow{display:flex;gap:9px;margin-top:15px}.chip{border:1px solid var(--line);border-radius:30px;background:#0a211e;color:var(--muted);padding:7px 11px;cursor:pointer;font-size:11px}.chip.active{background:#174a3b;color:var(--mint)}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:12px}td,th{text-align:left;padding:12px 8px;border-bottom:1px solid var(--line);white-space:nowrap}th{color:var(--muted);font-weight:500}.link{border:0;background:none;color:var(--mint);cursor:pointer}.notice{font-size:11px;line-height:1.6;color:#e7d5a4;background:#4b3d1c44;border:1px solid #d8b85b44;padding:12px;border-radius:11px}.empty{text-align:center;padding:25px;color:var(--muted);font-size:12px}.bottom{display:none}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 80% 0,#0d4a3b55,transparent 35%),var(--bg);color:var(--txt);font:14px 'DM Sans',sans-serif}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.wrap{max-width:1180px;margin:auto;padding:22px 22px 95px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;gap:12px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:48px;height:48px;border-radius:16px;background:linear-gradient(145deg,#5cf0b2,#087b61 65%,#031b19);display:grid;place-items:center;box-shadow:0 8px 25px #20d99a44;font:800 17px 'Space Grotesk';color:#05251c;position:relative}
+.logo:after{content:"";position:absolute;inset:7px;border:2px solid #eafff4;border-right-color:transparent;border-radius:50%;transform:rotate(-30deg)}
+.brand b{font:700 25px 'Space Grotesk';letter-spacing:-1px}
+.brand b span{color:var(--mint)}
+.tag{font-size:10px;color:var(--muted);letter-spacing:1.6px}
+.privacy{font-size:10px;color:#b8f8dc;border:1px solid #42dca055;background:#0e352b;padding:9px 12px;border-radius:30px}
+.btn{border:0;border-radius:11px;padding:11px 15px;background:linear-gradient(135deg,var(--mint),#2bd99a);color:#05271e;font-weight:700}
+.btn.alt{background:#1b443a;color:var(--txt);border:1px solid var(--line)}
+.btn.red{background:#542c32;color:#ffe1e1}
+.greet{display:flex;justify-content:space-between;align-items:end;margin:12px 0 20px;gap:12px}
+.eyebrow{color:var(--mint);font-size:10px;letter-spacing:2px;font-weight:700}
+.greet h1{font:600 32px 'Space Grotesk';margin:7px 0}
+.muted{color:var(--muted)}
+select,input,textarea{background:#081f1c;color:var(--txt);border:1px solid var(--line);padding:11px;border-radius:10px;width:100%}
+select.period{width:auto;min-width:180px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.card{background:linear-gradient(145deg,#12342e,#0a2521);border:1px solid var(--line);border-radius:18px;padding:17px;box-shadow:0 15px 40px #0002}
+.kpi{min-height:125px}
+.klabel{font-size:11px;color:var(--muted)}
+.value{font:700 27px 'Space Grotesk';margin:13px 0 6px}
+.green{color:var(--mint)}
+.redtxt{color:var(--red)}
+.grid{display:grid;grid-template-columns:1.4fr 1fr;gap:14px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px}
+.head h2{font:600 16px 'Space Grotesk';margin:0}
+.chart{height:175px;display:flex;align-items:end;gap:12px;border-bottom:1px solid var(--line);padding-top:10px}
+.col{height:100%;flex:1;display:flex;flex-direction:column;justify-content:end;align-items:center;gap:6px}
+.track{height:140px;width:min(100%,32px);background:#ffffff0b;border-radius:7px 7px 2px 2px;display:flex;align-items:end;overflow:hidden}
+.fill{width:100%;background:linear-gradient(var(--mint),#118b65);border-radius:7px 7px 0 0;min-height:2px}
+.col small{font-size:10px;color:var(--muted)}
+.bars{display:grid;gap:13px}
+.barrow{display:grid;gap:6px}
+.barlabel{display:flex;justify-content:space-between;font-size:12px}
+.barbg{height:7px;background:#ffffff12;border-radius:8px;overflow:hidden}
+.barfg{height:100%;background:linear-gradient(90deg,#20c98b,var(--lime));border-radius:8px}
+.tx{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.tx:last-child{border:0}
+.ico{width:38px;height:38px;background:#ffffff10;border-radius:12px;display:grid;place-items:center;font-size:18px}
+.txmain{flex:1;min-width:0}
+.txmain b{display:block;font-size:13px}
+.txmain small,.amt small{color:var(--muted);font-size:10px}
+.amt{text-align:right;font-weight:700;white-space:nowrap}
+.view{display:none}
+.view.active{display:block}
+.tabs{display:flex;gap:5px;background:#061e1a;border:1px solid var(--line);padding:5px;border-radius:12px}
+.tabs button{background:none;border:0;color:var(--muted);padding:8px 13px;border-radius:8px}
+.tabs button.active{background:#1b5542;color:var(--mint)}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:grid;gap:6px}
+.field label{font-size:10px;color:var(--muted);letter-spacing:.5px}
+.full{grid-column:1/-1}
+.formrow{display:flex;gap:9px;margin-top:15px}
+.link{border:0;background:none;color:var(--mint);padding:5px}
+.notice{font-size:11px;line-height:1.6;color:#e7d5a4;background:#4b3d1c44;border:1px solid #d8b85b44;padding:12px;border-radius:11px}
+.empty{text-align:center;padding:25px;color:var(--muted);font-size:12px}
+.bottom{display:none}
 @media(max-width:850px){.kpis{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}}
-@media(max-width:600px){.wrap{padding:14px 12px 90px}.privacy{display:none}.greet{align-items:start;flex-direction:column}.greet h1{font-size:27px}.two{grid-template-columns:1fr}.kpi{min-height:108px;padding:13px}.value{font-size:23px}.bottom{display:flex;position:fixed;bottom:0;left:0;right:0;background:#0b241f;border-top:1px solid var(--line);padding:8px 4px calc(8px + env(safe-area-inset-bottom));justify-content:space-around;z-index:4}.bottom button{background:none;border:0;color:var(--muted);font-size:10px}.bottom button.active{color:var(--mint)}.bottom span{display:block;font-size:18px;margin-bottom:3px}.formgrid{grid-template-columns:1fr 1fr}.tabs{width:100%}.tabs button{flex:1;padding:8px 3px}}
-</style></head><body><div class="wrap">
-<header class="top"><div class="brand"><div class="logo">360</div><div><b>UPI<span>360</span></b><div class="tag">YOUR MONEY. IN PERSPECTIVE.</div></div></div><div style="display:flex;align-items:center;gap:10px"><span class="privacy">● PRIVATE · ON THIS DEVICE</span><button class="btn" onclick="go('add')">＋ Add transaction</button></div></header>
-<div class="greet"><div><div class="eyebrow">PERSONAL MONEY COMMAND CENTRE</div><h1 id="hello">Good morning.</h1><div class="muted">One clear view of every rupee you track.</div></div><select class="period" id="month"></select></div>
+@media(max-width:600px){
+.wrap{padding:14px 12px 90px}
+.privacy{display:none}
+.greet{align-items:start;flex-direction:column}
+.greet h1{font-size:27px}
+.two{grid-template-columns:1fr}
+.kpi{min-height:108px;padding:13px}
+.value{font-size:23px}
+.bottom{display:flex;position:fixed;bottom:0;left:0;right:0;background:#0b241f;border-top:1px solid var(--line);padding:8px 4px calc(8px + env(safe-area-inset-bottom));justify-content:space-around;z-index:4}
+.bottom button{background:none;border:0;color:var(--muted);font-size:10px}
+.bottom button.active{color:var(--mint)}
+.bottom span{display:block;font-size:18px;margin-bottom:3px}
+.formgrid{grid-template-columns:1fr 1fr}
+.tabs{width:100%}
+.tabs button{flex:1;padding:8px 3px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="brand">
+    <div class="logo">360</div>
+    <div><b>UPI<span>360</span></b><div class="tag">YOUR MONEY. IN PERSPECTIVE.</div></div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px">
+    <span class="privacy">● PRIVATE · ON THIS DEVICE</span>
+    <button class="btn" type="button" onclick="go('add')">＋ Add transaction</button>
+  </div>
+</header>
+
+<div class="greet">
+  <div>
+    <div class="eyebrow">PERSONAL MONEY COMMAND CENTRE</div>
+    <h1 id="hello">Good morning.</h1>
+    <div class="muted">One clear view of every rupee you track.</div>
+  </div>
+  <select class="period" id="month" aria-label="Select month"></select>
+</div>
+
 <section id="dashboard" class="view active">
-<div class="kpis"><div class="card kpi"><div class="klabel">↗ TOTAL SPENT</div><div class="value" id="spent">₹0</div><small class="muted">Selected month</small></div><div class="card kpi"><div class="klabel">↙ MONEY RECEIVED</div><div class="value green" id="received">₹0</div><small class="muted">Credits recorded</small></div><div class="card kpi"><div class="klabel">⇄ NET CASH FLOW</div><div class="value" id="net">₹0</div><small class="muted">Received minus spent</small></div><div class="card kpi"><div class="klabel">▤ TRANSACTIONS</div><div class="value" id="count">0</div><small class="muted">Selected month</small></div></div>
-<div class="grid"><div class="card"><div class="head"><h2>Spending trend</h2><small class="muted">Last 6 months</small></div><div class="chart" id="trend"></div></div><div class="card"><div class="head"><h2>Spending by category</h2></div><div class="bars" id="cats"></div></div></div>
-<div class="two"><div class="card"><div class="head"><h2>UPI app usage</h2><small class="muted">Where you paid from</small></div><div class="bars" id="apps"></div></div><div class="card"><div class="head"><h2>Recent activity</h2><button class="link" onclick="go('transactions')">View all →</button></div><div id="recent"></div></div></div>
+  <div class="kpis">
+    <div class="card kpi"><div class="klabel">↗ TOTAL SPENT</div><div class="value" id="spent">₹0</div><small class="muted">Selected month</small></div>
+    <div class="card kpi"><div class="klabel">↙ MONEY RECEIVED</div><div class="value green" id="received">₹0</div><small class="muted">Credits recorded</small></div>
+    <div class="card kpi"><div class="klabel">⇄ NET CASH FLOW</div><div class="value" id="net">₹0</div><small class="muted">Received minus spent</small></div>
+    <div class="card kpi"><div class="klabel">▤ TRANSACTIONS</div><div class="value" id="count">0</div><small class="muted">Selected month</small></div>
+  </div>
+  <div class="grid">
+    <div class="card"><div class="head"><h2>Spending trend</h2><small class="muted">Last 6 months</small></div><div class="chart" id="trend"></div></div>
+    <div class="card"><div class="head"><h2>Spending by category</h2></div><div class="bars" id="cats"></div></div>
+  </div>
+  <div class="two">
+    <div class="card"><div class="head"><h2>UPI app usage</h2><small class="muted">Where you paid from</small></div><div class="bars" id="apps"></div></div>
+    <div class="card"><div class="head"><h2>Recent activity</h2><button class="link" type="button" onclick="go('transactions')">View all →</button></div><div id="recent"></div></div>
+  </div>
 </section>
-<section id="transactions" class="view"><div class="card"><div class="head"><h2>All transactions</h2><button class="btn" onclick="go('add')">＋ Add new</button></div><div id="filters" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px"><button class="chip active" data-f="All">All</button><button class="chip" data-f="Paid">Paid</button><button class="chip" data-f="Received">Received</button><button class="chip" data-f="Travel">Travel</button><button class="chip" data-f="Food">Food</button><button class="chip" data-f="Groceries">Groceries</button></div><input id="search" placeholder="Search merchant, app or category..." style="margin-bottom:12px"><div class="tablewrap"><table><thead><tr><th>MERCHANT</th><th>DATE</th><th>APP</th><th>CATEGORY</th><th>AMOUNT</th><th></th></tr></thead><tbody id="rows"></tbody></table></div><div class="empty" id="noRows" hidden>No matching transactions.</div></div></section>
-<section id="add" class="view"><div class="card" style="max-width:760px;margin:auto"><div class="head"><h2 id="formTitle">Add a transaction</h2><span class="privacy">₹ INR</span></div><form id="form"><input type="hidden" id="edit"><div class="formgrid"><div class="field"><label>TRANSACTION TYPE</label><select id="type"><option>Paid</option><option>Received</option></select></div><div class="field"><label>AMOUNT (₹)</label><input id="amount" type="number" min=".01" step=".01" required placeholder="250"></div><div class="field"><label>MERCHANT / PERSON</label><input id="merchant" required placeholder="Rapido, Swiggy, Rahul"></div><div class="field"><label>DATE</label><input id="date" type="date" required></div><div class="field"><label>UPI APP</label><select id="app"><option>PhonePe</option><option>Google Pay</option><option>Paytm</option><option>BHIM</option><option>Other UPI</option><option>Cash / Bank</option></select></div><div class="field"><label>CATEGORY</label><select id="category"><option>Travel</option><option>Food</option><option>Groceries</option><option>Shopping</option><option>Personal</option><option>Bills</option><option>Entertainment</option><option>Healthcare</option><option>Education</option><option>Other</option></select></div><div class="field full"><label>NOTES (OPTIONAL)</label><textarea id="notes" rows="2" placeholder="What was this payment for?"></textarea></div></div><div class="formrow"><button class="btn" id="save">Save transaction</button><button class="btn alt" type="button" onclick="resetForm()">Clear</button></div></form></div>
-<div class="card" style="max-width:760px;margin:14px auto"><div class="head"><h2>Import bank statement</h2><span class="privacy">CSV</span></div><p class="muted" style="font-size:12px;line-height:1.6">Choose a CSV exported by your bank. UPI360 will try to detect date, narration, amount, UPI app and category. Bank formats vary, so review imported records.</p><input id="csv" type="file" accept=".csv,text/csv"><button class="btn alt" style="margin-top:10px" onclick="importCSV()">Import CSV</button><p id="importMsg" class="muted"></p></div></section>
-<section id="analytics" class="view"><div class="card"><div class="head"><h2>Annual overview</h2><select class="period" id="year"></select></div><div class="kpis" style="grid-template-columns:repeat(3,1fr)"><div class="card kpi"><div class="klabel">YEARLY SPENT</div><div class="value" id="ys">₹0</div></div><div class="card kpi"><div class="klabel">YEARLY RECEIVED</div><div class="value green" id="yr">₹0</div></div><div class="card kpi"><div class="klabel">NET CASH FLOW</div><div class="value" id="yn">₹0</div></div></div><div class="head" style="margin-top:18px"><h2>12-month spending comparison</h2></div><div class="chart" id="yearChart"></div><div id="monthRows"></div></div><div class="two"><div class="card"><div class="head"><h2>Category totals</h2></div><div class="bars" id="yearCats"></div></div><div class="card"><div class="head"><h2>UPI app totals</h2></div><div class="bars" id="yearApps"></div></div></div><div class="card" style="margin-top:14px"><div class="head"><h2>Merchant insights</h2><small class="muted">Highest spending</small></div><div class="bars" id="merchants"></div></div></section>
-<section id="settings" class="view"><div class="two"><div class="card"><div class="head"><h2>Private by design</h2><span class="privacy">LOCAL ONLY</span></div><p class="muted" style="font-size:12px;line-height:1.7">Transactions are saved in this browser on this device. This version does not upload your financial records to a UPI360 server. Clearing browser/site data or deleting the website data can permanently erase your records.</p></div><div class="card"><div class="head"><h2>Data controls</h2></div><p class="muted" id="dataCount"></p><button class="btn red" onclick="clearAll()">Delete all transactions</button></div></div><div class="card" style="margin-top:14px"><div class="head"><h2>Important limitations</h2></div><div class="notice">UPI360 cannot read private transaction histories inside PhonePe, Google Pay, Paytm or BHIM by entering a UPI ID. Use manual entry or import a bank CSV. App and merchant detection depends on bank narration and may need correction. Never enter your UPI PIN, OTP, bank password or card security code here.</div></div></section>
-<div class="muted" style="text-align:center;font-size:10px;margin-top:22px">UPI360 · Personal expense tracker · Your data stays in this browser</div></div>
-<nav class="bottom"><button class="active" data-go="dashboard" onclick="go('dashboard')"><span>⌂</span>Home</button><button data-go="transactions" onclick="go('transactions')"><span>▤</span>History</button><button data-go="add" onclick="go('add')"><span>＋</span>Add</button><button data-go="analytics" onclick="go('analytics')"><span>▥</span>Analysis</button><button data-go="settings" onclick="go('settings')"><span>⚙</span>More</button></nav>
+
+<section id="transactions" class="view">
+  <div class="card">
+    <div class="head"><h2>All transactions</h2><button class="btn" type="button" onclick="go('add')">＋ Add new</button></div>
+    <div id="filters" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">
+      <button class="chip active" data-f="All">All</button>
+      <button class="chip" data-f="Paid">Paid</button>
+      <button class="chip" data-f="Received">Received</button>
+      <button class="chip" data-f="Travel">Travel</button>
+      <button class="chip" data-f="Food">Food</button>
+      <button class="chip" data-f="Groceries">Groceries</button>
+    </div>
+    <input id="search" placeholder="Search merchant, app or category..." style="margin-bottom:12px">
+    <div style="overflow:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:12px">
+        <thead><tr><th>MERCHANT</th><th>DATE</th><th>APP</th><th>CATEGORY</th><th>AMOUNT</th><th>ACTIONS</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <div class="empty" id="noRows" hidden>No matching transactions.</div>
+  </div>
+</section>
+
+<section id="add" class="view">
+  <div class="card" style="max-width:760px;margin:auto">
+    <div class="head"><h2 id="formTitle">Add a transaction</h2><span class="privacy">₹ INR</span></div>
+    <form id="form">
+      <input type="hidden" id="edit">
+      <div class="formgrid">
+        <div class="field"><label for="type">TRANSACTION TYPE</label><select id="type"><option>Paid</option><option>Received</option></select></div>
+        <div class="field"><label for="amount">AMOUNT (₹)</label><input id="amount" type="number" min="0.01" step="0.01" required placeholder="250"></div>
+        <div class="field"><label for="merchant">MERCHANT / PERSON</label><input id="merchant" required placeholder="Rapido, Swiggy, Rahul"></div>
+        <div class="field"><label for="date">DATE</label><input id="date" type="date" required></div>
+        <div class="field"><label for="app">UPI APP</label><select id="app"><option>PhonePe</option><option>Google Pay</option><option>Paytm</option><option>BHIM</option><option>Other UPI</option><option>Cash / Bank</option></select></div>
+        <div class="field"><label for="category">CATEGORY</label><select id="category"><option>Travel</option><option>Food</option><option>Groceries</option><option>Shopping</option><option>Personal</option><option>Bills</option><option>Entertainment</option><option>Healthcare</option><option>Education</option><option>Other</option></select></div>
+        <div class="field full"><label for="notes">NOTES (OPTIONAL)</label><textarea id="notes" rows="2" placeholder="What was this payment for?"></textarea></div>
+      </div>
+      <div class="formrow">
+        <button class="btn" id="save" type="submit">Save transaction</button>
+        <button class="btn alt" type="button" onclick="resetForm()">Clear</button>
+        <button class="btn alt" type="button" onclick="go('dashboard')">Cancel</button>
+      </div>
+    </form>
+  </div>
+  <div class="card" style="max-width:760px;margin:14px auto">
+    <div class="head"><h2>Import bank statement</h2><span class="privacy">CSV</span></div>
+    <p class="muted" style="font-size:12px;line-height:1.6">Choose a CSV exported by your bank. UPI360 will try to detect date, narration, amount, UPI app and category. Bank formats vary, so review imported records.</p>
+    <input id="csv" type="file" accept=".csv,text/csv">
+    <button class="btn alt" style="margin-top:10px" type="button" onclick="importCSV()">Import CSV</button>
+    <p id="importMsg" class="muted"></p>
+  </div>
+</section>
+
+<section id="analytics" class="view">
+  <div class="card">
+    <div class="head"><h2>Annual overview</h2><select class="period" id="year"></select></div>
+    <div class="kpis" style="grid-template-columns:repeat(3,1fr)">
+      <div class="card kpi"><div class="klabel">YEARLY SPENT</div><div class="value" id="ys">₹0</div></div>
+      <div class="card kpi"><div class="klabel">YEARLY RECEIVED</div><div class="value green" id="yr">₹0</div></div>
+      <div class="card kpi"><div class="klabel">NET CASH FLOW</div><div class="value" id="yn">₹0</div></div>
+    </div>
+    <div class="head" style="margin-top:18px"><h2>12-month spending comparison</h2></div>
+    <div class="chart" id="yearChart"></div>
+    <div id="monthRows"></div>
+  </div>
+  <div class="two">
+    <div class="card"><div class="head"><h2>Category totals</h2></div><div class="bars" id="yearCats"></div></div>
+    <div class="card"><div class="head"><h2>UPI app totals</h2></div><div class="bars" id="yearApps"></div></div>
+  </div>
+  <div class="card" style="margin-top:14px"><div class="head"><h2>Merchant insights</h2><small class="muted">Highest spending</small></div><div class="bars" id="merchants"></div></div>
+</section>
+
+<section id="settings" class="view">
+  <div class="two">
+    <div class="card"><div class="head"><h2>Private by design</h2><span class="privacy">LOCAL ONLY</span></div><p class="muted" style="font-size:12px;line-height:1.7">Transactions are saved in this browser on this device. This version does not upload your financial records to a UPI360 server. Clearing browser/site data or deleting the website data can permanently erase your records.</p></div>
+    <div class="card"><div class="head"><h2>Data controls</h2></div><p class="muted" id="dataCount"></p><button class="btn red" type="button" onclick="clearAll()">Delete all transactions</button></div>
+  </div>
+  <div class="card" style="margin-top:14px"><div class="head"><h2>Important limitations</h2></div><div class="notice">UPI360 cannot read private transaction histories inside PhonePe, Google Pay, Paytm or BHIM by entering a UPI ID. Use manual entry or import a bank CSV. App and merchant detection depends on bank narration and may need correction. Never enter your UPI PIN, OTP, bank password or card security code here.</div></div>
+</section>
+
+<div class="muted" style="text-align:center;font-size:10px;margin-top:22px">UPI360 · Personal expense tracker · Your data stays in this browser</div>
+</div>
+
+<nav class="bottom">
+  <button class="active" data-go="dashboard" type="button" onclick="go('dashboard')"><span>⌂</span>Home</button>
+  <button data-go="transactions" type="button" onclick="go('transactions')"><span>▤</span>History</button>
+  <button data-go="add" type="button" onclick="go('add')"><span>＋</span>Add</button>
+  <button data-go="analytics" type="button" onclick="go('analytics')"><span>▥</span>Analysis</button>
+  <button data-go="settings" type="button" onclick="go('settings')"><span>⚙</span>More</button>
+</nav>
+
 <script>
-const KEY='upi360_personal_v1';let data=JSON.parse(localStorage.getItem(KEY)||'[]'),filter='All';
-const $=id=>document.getElementById(id),fmt=n=>'₹'+Number(n||0).toLocaleString('en-IN',{maximumFractionDigits:2}),month=d=>d.slice(0,7),uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7),safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function sum(a,t){return a.filter(x=>x.type===t).reduce((s,x)=>s+ +x.amount,0)}function group(a,k){let m={};a.filter(x=>x.type==='Paid').forEach(x=>m[x[k]||'Other']=(m[x[k]||'Other']||0)+ +x.amount);return Object.entries(m).sort((a,b)=>b[1]-a[1])}
-function bars(id,a){let max=Math.max(1,...a.map(x=>x[1]));$(id).innerHTML=a.length?a.map(([n,v])=>`<div class="barrow"><div class="barlabel"><span>${safe(n)}</span><b>${fmt(v)}</b></div><div class="barbg"><div class="barfg" style="width:${v/max*100}%"></div></div></div>`).join(''):'<div class="empty">No data yet</div>'}
-function icon(c){return ({Travel:'🚕',Food:'🍜',Groceries:'🛒',Shopping:'🛍️',Personal:'👤',Bills:'💡',Entertainment:'🎬',Healthcare:'🩺',Education:'📚'})[c]||'✦'}
-function render(){let m=$('month').value,a=data.filter(x=>month(x.date)===m),sp=sum(a,'Paid'),rc=sum(a,'Received');$('spent').textContent=fmt(sp);$('received').textContent=fmt(rc);$('net').textContent=fmt(rc-sp);$('net').className='value '+(rc>=sp?'green':'redtxt');$('count').textContent=a.length;bars('cats',group(a,'category'));bars('apps',group(a,'app'));$('recent').innerHTML=[...a].sort((x,y)=>y.date.localeCompare(x.date)).slice(0,5).map(tx).join('')||'<div class="empty">No transactions yet. Add one to get started.</div>';
-let six=[];for(let i=5;i>=0;i--){let d=new Date(m+'-01T00:00:00');d.setMonth(d.getMonth()-i);let k=d.toISOString().slice(0,7);six.push({k,n:d.toLocaleDateString('en-IN',{month:'short'}),v:sum(data.filter(x=>month(x.date)===k),'Paid')})}let max=Math.max(1,...six.map(x=>x.v));$('trend').innerHTML=six.map(x=>`<div class="col"><div class="track"><div class="fill" style="height:${x.v/max*100}%"></div></div><small>${x.n}</small></div>`).join('');renderRows();renderYear();$('dataCount').textContent=data.length+' transactions stored on this device.'}
-function tx(x){return `<div class="tx"><div class="ico">${icon(x.category)}</div><div class="txmain"><b>${safe(x.merchant)}</b><small>${safe(x.app)} · ${safe(x.category)}</small></div><div class="amt ${x.type==='Received'?'green':''}">${x.type==='Received'?'+':'−'}${fmt(x.amount)}<small>${safe(x.date)}</small></div></div>`}
-function renderRows(){let q=$('search').value.toLowerCase(),a=data.filter(x=>(filter==='All'||x.type===filter||x.category===filter)&&[x.merchant,x.app,x.category,x.notes].join(' ').toLowerCase().includes(q)).sort((x,y)=>y.date.localeCompare(x.date));$('rows').innerHTML=a.map(x=>`<tr><td><b>${safe(x.merchant)}</b></td><td>${x.date}</td><td>${safe(x.app)}</td><td>${safe(x.category)}</td><td class="${x.type==='Received'?'green':''}">${x.type==='Received'?'+':'−'}${fmt(x.amount)}</td><td><button class="link" onclick="editTx('${x.id}')">Edit</button> <button class="link" onclick="delTx('${x.id}')">×</button></td></tr>`).join('');$('noRows').hidden=!!a.length}
-function renderYear(){let y=$('year').value||new Date().getFullYear(),a=data.filter(x=>x.date.startsWith(y)),sp=sum(a,'Paid'),rc=sum(a,'Received');$('ys').textContent=fmt(sp);$('yr').textContent=fmt(rc);$('yn').textContent=fmt(rc-sp);let ms=Array.from({length:12},(_,i)=>{let k=y+'-'+String(i+1).padStart(2,'0'),l=a.filter(x=>month(x.date)===k);return {k,n:new Date(k+'-01T00:00:00').toLocaleDateString('en-IN',{month:'short'}),s:sum(l,'Paid'),r:sum(l,'Received')}}),max=Math.max(1,...ms.map(x=>x.s));$('yearChart').innerHTML=ms.map(x=>`<div class="col"><div class="track"><div class="fill" style="height:${x.s/max*100}%"></div></div><small>${x.n}</small></div>`).join('');$('monthRows').innerHTML=ms.map(x=>`<div class="barlabel" style="padding:9px 0;border-bottom:1px solid var(--line)"><span>${new Date(x.k+'-01').toLocaleDateString('en-IN',{month:'long'})}</span><span>Spent <b>${fmt(x.s)}</b> · Received <b class="green">${fmt(x.r)}</b></span></div>`).join('');bars('yearCats',group(a,'category'));bars('yearApps',group(a,'app'));bars('merchants',group(a,'merchant').slice(0,8))}
+'use strict';
+
+const KEY = 'upi360_personal_v1';
+let data = [];
+let filter = 'All';
+
+try {
+  const stored = JSON.parse(localStorage.getItem(KEY) || '[]');
+  data = Array.isArray(stored) ? stored : [];
+} catch (error) {
+  data = [];
+}
+
+const $ = id => document.getElementById(id);
+const fmt = n => '₹' + Number(n || 0).toLocaleString('en-IN', {maximumFractionDigits:2});
+const month = d => String(d || '').slice(0,7);
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+const safe = s => String(s ?? '').replace(/[&<>"']/g, c => ({
+  '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+}[c]));
+
+function sum(items, type) {
+  return items.filter(x => x.type === type).reduce((s,x) => s + Number(x.amount || 0), 0);
+}
+
+function group(items, key) {
+  const totals = {};
+  items.filter(x => x.type === 'Paid').forEach(x => {
+    const name = x[key] || 'Other';
+    totals[name] = (totals[name] || 0) + Number(x.amount || 0);
+  });
+  return Object.entries(totals).sort((a,b) => b[1] - a[1]);
+}
+
+function bars(id, items) {
+  const element = $(id);
+  if (!element) return;
+  const max = Math.max(1, ...items.map(x => x[1]));
+  element.innerHTML = items.length
+    ? items.map(([name,value]) => `
+      <div class="barrow">
+        <div class="barlabel"><span>${safe(name)}</span><b>${fmt(value)}</b></div>
+        <div class="barbg"><div class="barfg" style="width:${value/max*100}%"></div></div>
+      </div>`).join('')
+    : '<div class="empty">No data yet</div>';
+}
+
+function icon(category) {
+  return ({
+    Travel:'🚕', Food:'🍜', Groceries:'🛒', Shopping:'🛍️',
+    Personal:'👤', Bills:'💡', Entertainment:'🎬',
+    Healthcare:'🩺', Education:'📚'
+  })[category] || '✦';
+}
+
+/* Navigation: globally available to all HTML buttons */
 window.go = function(id) {
-  document.querySelectorAll('.view').forEach(x => {
-    x.classList.toggle('active', x.id === id);
+  document.querySelectorAll('.view').forEach(view => {
+    view.classList.toggle('active', view.id === id);
   });
-
-  document.querySelectorAll('.bottom button').forEach(x => {
-    x.classList.toggle('active', x.dataset.go === id);
+  document.querySelectorAll('.bottom button').forEach(button => {
+    button.classList.toggle('active', button.dataset.go === id);
   });
-
-  window.scrollTo({top: 0, behavior: 'smooth'});
-
+  window.scrollTo({top:0, behavior:'smooth'});
+  if (id === 'transactions') renderRows();
   if (id === 'analytics') renderYear();
+  if (id === 'add' && !$('edit').value) resetForm();
 };
-function resetForm(){ $('form').reset();$('edit').value='';$('date').value=new Date().toISOString().slice(0,10);$('formTitle').textContent='Add a transaction';$('save').textContent='Save transaction'}
-function editTx(id){let x=data.find(t=>t.id===id);if(!x)return;go('add');$('edit').value=id;['type','amount','merchant','date','app','category','notes'].forEach(k=>$(k).value=x[k]||'');$('formTitle').textContent='Edit transaction';$('save').textContent='Update transaction'}
-function delTx(id){if(confirm('Delete this transaction?')){data=data.filter(x=>x.id!==id);save()}}
-function save(){localStorage.setItem(KEY,JSON.stringify(data));render()}
-$('form').addEventListener('submit',e=>{e.preventDefault();let id=$('edit').value,x={id:id||uid(),type:$('type').value,amount:+$('amount').value,merchant:$('merchant').value.trim(),date:$('date').value,app:$('app').value,category:$('category').value,notes:$('notes').value.trim()};if(!x.amount||x.amount<=0)return alert('Enter a valid amount');data=id?data.map(t=>t.id===id?x:t):[...data,x];save();resetForm();go('dashboard')});
-function parseCSV(s){let a=[],v='',q=false;for(let i=0;i<s.length;i++){let c=s[i];if(c==='"'&&s[i+1]==='"'){v+='"';i++}else if(c==='"')q=!q;else if(c===','&&!q){a.push(v.trim());v=''}else v+=c}a.push(v.trim());return a}
-function dateParse(s){s=String(s||'').trim();if(/^\d{4}-\d{2}-\d{2}$/.test(s))return s;let m=s.match(/^(\d{1,2})[\/-](\d{1,2})[\/-](\d{2,4})$/);if(m)return `${m[3].length===2?'20'+m[3]:m[3]}-${m[2].padStart(2,'0')}-${m[1].padStart(2,'0')}`;let d=new Date(s);return isNaN(d)?'':d.toISOString().slice(0,10)}
-function infer(s){s=s.toLowerCase();return {app:/phonepe/.test(s)?'PhonePe':/gpay|google.?pay|tez/.test(s)?'Google Pay':/paytm/.test(s)?'Paytm':/bhim/.test(s)?'BHIM':'Other UPI',category:/rapido|uber|ola|metro|irctc|taxi|petrol/.test(s)?'Travel':/swiggy|zomato|restaurant|cafe|food/.test(s)?'Food':/grocery|dmart|reliance fresh|kirana|bigbasket|blinkit/.test(s)?'Groceries':/amazon|flipkart|myntra/.test(s)?'Shopping':'Other'}}
-function importCSV(){let f=$('csv').files[0];if(!f)return alert('Choose a CSV file');let r=new FileReader();r.onload=()=>{let l=String(r.result).split(/\r?\n/).filter(Boolean),h=parseCSV(l.shift()).map(x=>x.toLowerCase()),ix=names=>h.findIndex(v=>names.some(n=>v.includes(n))),di=ix(['date']),ni=ix(['narration','description','merchant','remarks','particulars']),ai=ix(['amount']),de=ix(['debit','withdrawal']),cr=ix(['credit','deposit']),n=0;l.forEach(line=>{let c=parseCSV(line),d=dateParse(c[di]),desc=c[ni]||'Imported transaction',db=de>=0?parseFloat(String(c[de]).replace(/[₹,]/g,''))||0:0,cv=cr>=0?parseFloat(String(c[cr]).replace(/[₹,]/g,''))||0:0,amt=ai>=0?parseFloat(String(c[ai]).replace(/[₹,]/g,''))||0:Math.max(db,cv);if(!d||!amt)return;let z=infer(desc);data.push({id:uid(),date:d,merchant:desc,type:cv>0?'Received':'Paid',amount:amt,...z,notes:'Imported CSV — review'});n++});save();$('importMsg').textContent=`Imported ${n} rows. Please review imported labels.`};r.readAsText(f)}
-function clearAll(){if(confirm('Delete all saved transactions? Export a backup first if needed.')){data=[];save()}}
-// UPI360 initialisation
-(function initUPI360(){
-  const now = new Date();
-  const monthSelect = $('month');
-  const yearSelect = $('year');
 
-  for(let i=0; i<24; i++){
-    const d = new Date(now.getFullYear(), now.getMonth()-i, 1);
-    const value = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0');
+function tx(x) {
+  return `<div class="tx">
+    <div class="ico">${icon(x.category)}</div>
+    <div class="txmain"><b>${safe(x.merchant)}</b><small>${safe(x.app)} · ${safe(x.category)}</small></div>
+    <div class="amt ${x.type === 'Received' ? 'green' : ''}">
+      ${x.type === 'Received' ? '+' : '−'}${fmt(x.amount)}
+      <small>${safe(x.date)}</small>
+    </div>
+  </div>`;
+}
+
+function render() {
+  const selectedMonth = $('month').value;
+  const items = data.filter(x => month(x.date) === selectedMonth);
+  const spent = sum(items,'Paid');
+  const received = sum(items,'Received');
+
+  $('spent').textContent = fmt(spent);
+  $('received').textContent = fmt(received);
+  $('net').textContent = fmt(received-spent);
+  $('net').className = 'value ' + (received >= spent ? 'green' : 'redtxt');
+  $('count').textContent = items.length;
+
+  bars('cats', group(items,'category'));
+  bars('apps', group(items,'app'));
+
+  $('recent').innerHTML = [...items]
+    .sort((a,b) => b.date.localeCompare(a.date))
+    .slice(0,5).map(tx).join('')
+    || '<div class="empty">No transactions yet. Add one to get started.</div>';
+
+  const six = [];
+  for (let i=5; i>=0; i--) {
+    const d = new Date(selectedMonth + '-01T12:00:00');
+    d.setMonth(d.getMonth()-i);
+    const key = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0');
+    six.push({
+      label:d.toLocaleDateString('en-IN',{month:'short'}),
+      value:sum(data.filter(x => month(x.date) === key),'Paid')
+    });
+  }
+
+  const max = Math.max(1,...six.map(x => x.value));
+  $('trend').innerHTML = six.map(x => `
+    <div class="col"><div class="track"><div class="fill" style="height:${x.value/max*100}%"></div></div><small>${x.label}</small></div>
+  `).join('');
+
+  renderRows();
+  renderYear();
+  $('dataCount').textContent = data.length + ' transactions stored on this device.';
+}
+
+function renderRows() {
+  const query = $('search').value.toLowerCase();
+  const items = data.filter(x =>
+    (filter === 'All' || x.type === filter || x.category === filter) &&
+    [x.merchant,x.app,x.category,x.notes].join(' ').toLowerCase().includes(query)
+  ).sort((a,b) => b.date.localeCompare(a.date));
+
+  $('rows').innerHTML = items.map(x => `
+    <tr>
+      <td><b>${safe(x.merchant)}</b></td>
+      <td>${safe(x.date)}</td>
+      <td>${safe(x.app)}</td>
+      <td>${safe(x.category)}</td>
+      <td class="${x.type === 'Received' ? 'green' : ''}">${x.type === 'Received' ? '+' : '−'}${fmt(x.amount)}</td>
+      <td><button class="link" type="button" onclick="editTx('${safe(x.id)}')">Edit</button>
+      <button class="link" type="button" onclick="delTx('${safe(x.id)}')">Delete</button></td>
+    </tr>
+  `).join('');
+
+  $('noRows').hidden = items.length > 0;
+}
+
+function renderYear() {
+  const year = $('year').value || String(new Date().getFullYear());
+  const items = data.filter(x => String(x.date).startsWith(year));
+  const spent = sum(items,'Paid');
+  const received = sum(items,'Received');
+
+  $('ys').textContent = fmt(spent);
+  $('yr').textContent = fmt(received);
+  $('yn').textContent = fmt(received-spent);
+
+  const months = Array.from({length:12},(_,i) => {
+    const key = year + '-' + String(i+1).padStart(2,'0');
+    const records = items.filter(x => month(x.date) === key);
+    return {
+      key,
+      label:new Date(Number(year),i,1).toLocaleDateString('en-IN',{month:'short'}),
+      spent:sum(records,'Paid'),
+      received:sum(records,'Received')
+    };
+  });
+
+  const max = Math.max(1,...months.map(x => x.spent));
+  $('yearChart').innerHTML = months.map(x => `
+    <div class="col"><div class="track"><div class="fill" style="height:${x.spent/max*100}%"></div></div><small>${x.label}</small></div>
+  `).join('');
+
+  $('monthRows').innerHTML = months.map(x => `
+    <div class="barlabel" style="padding:9px 0;border-bottom:1px solid var(--line)">
+      <span>${new Date(Number(year),Number(x.key.slice(5,7))-1,1).toLocaleDateString('en-IN',{month:'long'})}</span>
+      <span>Spent <b>${fmt(x.spent)}</b> · Received <b class="green">${fmt(x.received)}</b></span>
+    </div>
+  `).join('');
+
+  bars('yearCats',group(items,'category'));
+  bars('yearApps',group(items,'app'));
+  bars('merchants',group(items,'merchant').slice(0,8));
+}
+
+function save() {
+  try {
+    localStorage.setItem(KEY,JSON.stringify(data));
+    render();
+  } catch(error) {
+    alert('Unable to save data in this browser. Check browser storage settings.');
+  }
+}
+
+function resetForm() {
+  $('form').reset();
+  $('edit').value = '';
+  $('date').value = new Date().toISOString().slice(0,10);
+  $('formTitle').textContent = 'Add a transaction';
+  $('save').textContent = 'Save transaction';
+}
+
+function editTx(id) {
+  const item = data.find(x => x.id === id);
+  if (!item) return;
+  go('add');
+  $('edit').value = item.id;
+  ['type','amount','merchant','date','app','category','notes'].forEach(key => {
+    $(key).value = item[key] || '';
+  });
+  $('formTitle').textContent = 'Edit transaction';
+  $('save').textContent = 'Update transaction';
+}
+
+function delTx(id) {
+  if (confirm('Delete this transaction?')) {
+    data = data.filter(x => x.id !== id);
+    save();
+  }
+}
+
+function clearAll() {
+  if (confirm('Delete all saved transactions? This cannot be undone.')) {
+    data = [];
+    save();
+  }
+}
+
+$('form').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const id = $('edit').value;
+  const amount = Number($('amount').value);
+
+  if (!Number.isFinite(amount) || amount <= 0) {
+    alert('Enter a valid amount.');
+    return;
+  }
+
+  const item = {
+    id:id || uid(),
+    type:$('type').value,
+    amount,
+    merchant:$('merchant').value.trim(),
+    date:$('date').value,
+    app:$('app').value,
+    category:$('category').value,
+    notes:$('notes').value.trim()
+  };
+
+  if (!item.merchant || !item.date) {
+    alert('Please enter merchant and date.');
+    return;
+  }
+
+  data = id ? data.map(x => x.id === id ? item : x) : [...data,item];
+  save();
+  resetForm();
+  go('dashboard');
+  alert('Transaction saved successfully.');
+});
+
+function parseCSV(line) {
+  const result = [];
+  let value = '';
+  let quoted = false;
+
+  for (let i=0; i<line.length; i++) {
+    const char = line[i];
+    if (char === '"' && line[i+1] === '"') {
+      value += '"'; i++;
+    } else if (char === '"') {
+      quoted = !quoted;
+    } else if (char === ',' && !quoted) {
+      result.push(value.trim()); value = '';
+    } else {
+      value += char;
+    }
+  }
+  result.push(value.trim());
+  return result;
+}
+
+function dateParse(value) {
+  value = String(value || '').trim();
+  if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
+  const match = value.match(/^(\d{1,2})[/-](\d{1,2})[/-](\d{2,4})$/);
+  if (match) {
+    const year = match[3].length === 2 ? '20'+match[3] : match[3];
+    return year+'-'+match[2].padStart(2,'0')+'-'+match[1].padStart(2,'0');
+  }
+  const date = new Date(value);
+  return isNaN(date) ? '' : date.toISOString().slice(0,10);
+}
+
+function infer(description) {
+  const text = description.toLowerCase();
+  return {
+    app:/phonepe/.test(text) ? 'PhonePe' :
+        /gpay|google.?pay|tez/.test(text) ? 'Google Pay' :
+        /paytm/.test(text) ? 'Paytm' :
+        /bhim/.test(text) ? 'BHIM' : 'Other UPI',
+    category:/rapido|uber|ola|metro|irctc|taxi|petrol/.test(text) ? 'Travel' :
+      /swiggy|zomato|restaurant|cafe|food/.test(text) ? 'Food' :
+      /grocery|dmart|reliance fresh|kirana|bigbasket|blinkit/.test(text) ? 'Groceries' :
+      /amazon|flipkart|myntra/.test(text) ? 'Shopping' : 'Other'
+  };
+}
+
+function importCSV() {
+  const file = $('csv').files[0];
+  if (!file) return alert('Choose a CSV file first.');
+
+  const reader = new FileReader();
+  reader.onload = function() {
+    const lines = String(reader.result).split(/\r?\n/).filter(Boolean);
+    if (lines.length < 2) {
+      alert('The CSV file has no transaction rows.');
+      return;
+    }
+
+    const headers = parseCSV(lines.shift()).map(x => x.toLowerCase());
+    const findColumn = names => headers.findIndex(v => names.some(n => v.includes(n)));
+    const dateIndex = findColumn(['date']);
+    const narrationIndex = findColumn(['narration','description','merchant','remarks','particulars']);
+    const amountIndex = findColumn(['amount']);
+    const debitIndex = findColumn(['debit','withdrawal']);
+    const creditIndex = findColumn(['credit','deposit']);
+    let imported = 0;
+
+    lines.forEach(line => {
+      const columns = parseCSV(line);
+      const date = dateParse(columns[dateIndex]);
+      const description = columns[narrationIndex] || 'Imported transaction';
+      const debit = debitIndex >= 0 ? parseFloat(String(columns[debitIndex]).replace(/[₹,]/g,'')) || 0 : 0;
+      const credit = creditIndex >= 0 ? parseFloat(String(columns[creditIndex]).replace(/[₹,]/g,'')) || 0 : 0;
+      const amount = amountIndex >= 0
+        ? parseFloat(String(columns[amountIndex]).replace(/[₹,]/g,'')) || 0
+        : Math.max(debit,credit);
+
+      if (!date || !amount) return;
+      const detected = infer(description);
+      data.push({
+        id:uid(), date, merchant:description,
+        type:credit > 0 ? 'Received' : 'Paid',
+        amount, ...detected, notes:'Imported CSV — review'
+      });
+      imported++;
+    });
+
+    save();
+    $('importMsg').textContent = `Imported ${imported} rows. Please review the imported transactions.`;
+  };
+  reader.readAsText(file);
+}
+
+/* Start the app only after all page elements exist. */
+(function initUPI360() {
+  const now = new Date();
+  const currentMonth = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0');
+
+  for (let i=0; i<24; i++) {
+    const date = new Date(now.getFullYear(),now.getMonth()-i,1);
+    const value = date.getFullYear() + '-' + String(date.getMonth()+1).padStart(2,'0');
     const option = document.createElement('option');
     option.value = value;
-    option.textContent = d.toLocaleDateString('en-IN',{month:'long',year:'numeric'});
-    monthSelect.appendChild(option);
+    option.textContent = date.toLocaleDateString('en-IN',{month:'long',year:'numeric'});
+    $('month').appendChild(option);
   }
 
-  monthSelect.value = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0');
+  $('month').value = currentMonth;
 
-  for(let y=now.getFullYear(); y>=now.getFullYear()-9; y--){
+  for (let year=now.getFullYear(); year>=now.getFullYear()-9; year--) {
     const option = document.createElement('option');
-    option.value = String(y);
-    option.textContent = String(y);
-    yearSelect.appendChild(option);
+    option.value = String(year);
+    option.textContent = String(year);
+    $('year').appendChild(option);
   }
 
-  yearSelect.value = String(now.getFullYear());
+  $('year').value = String(now.getFullYear());
   $('date').value = now.toISOString().slice(0,10);
 
-  monthSelect.addEventListener('change', render);
-  yearSelect.addEventListener('change', renderYear);
-  $('search').addEventListener('input', renderRows);
+  $('month').addEventListener('change',render);
+  $('year').addEventListener('change',renderYear);
+  $('search').addEventListener('input',renderRows);
 
-  $('filters').addEventListener('click', e => {
-    const b = e.target.closest('button[data-f]');
-    if(!b) return;
-    filter = b.dataset.f;
-    $('filters').querySelectorAll('button').forEach(x =>
-      x.classList.toggle('active', x === b)
-    );
+  $('filters').addEventListener('click',event => {
+    const button = event.target.closest('button[data-f]');
+    if (!button) return;
+    filter = button.dataset.f;
+    $('filters').querySelectorAll('button').forEach(x => {
+      x.classList.toggle('active',x === button);
+    });
     renderRows();
   });
 
   render();
 })();
-
->
+</script>
+</body>
+</html>
