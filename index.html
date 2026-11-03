@@ -46,4 +46,48 @@ function dateParse(s){s=String(s||'').trim();if(/^\d{4}-\d{2}-\d{2}$/.test(s))re
 function infer(s){s=s.toLowerCase();return {app:/phonepe/.test(s)?'PhonePe':/gpay|google.?pay|tez/.test(s)?'Google Pay':/paytm/.test(s)?'Paytm':/bhim/.test(s)?'BHIM':'Other UPI',category:/rapido|uber|ola|metro|irctc|taxi|petrol/.test(s)?'Travel':/swiggy|zomato|restaurant|cafe|food/.test(s)?'Food':/grocery|dmart|reliance fresh|kirana|bigbasket|blinkit/.test(s)?'Groceries':/amazon|flipkart|myntra/.test(s)?'Shopping':'Other'}}
 function importCSV(){let f=$('csv').files[0];if(!f)return alert('Choose a CSV file');let r=new FileReader();r.onload=()=>{let l=String(r.result).split(/\r?\n/).filter(Boolean),h=parseCSV(l.shift()).map(x=>x.toLowerCase()),ix=names=>h.findIndex(v=>names.some(n=>v.includes(n))),di=ix(['date']),ni=ix(['narration','description','merchant','remarks','particulars']),ai=ix(['amount']),de=ix(['debit','withdrawal']),cr=ix(['credit','deposit']),n=0;l.forEach(line=>{let c=parseCSV(line),d=dateParse(c[di]),desc=c[ni]||'Imported transaction',db=de>=0?parseFloat(String(c[de]).replace(/[₹,]/g,''))||0:0,cv=cr>=0?parseFloat(String(c[cr]).replace(/[₹,]/g,''))||0:0,amt=ai>=0?parseFloat(String(c[ai]).replace(/[₹,]/g,''))||0:Math.max(db,cv);if(!d||!amt)return;let z=infer(desc);data.push({id:uid(),date:d,merchant:desc,type:cv>0?'Received':'Paid',amount:amt,...z,notes:'Imported CSV — review'});n++});save();$('importMsg').textContent=`Imported ${n} rows. Please review imported labels.`};r.readAsText(f)}
 function clearAll(){if(confirm('Delete all saved transactions? Export a backup first if needed.')){data=[];save()}}
+// UPI360 initialisation
+(function initUPI360(){
+  const now = new Date();
+  const monthSelect = $('month');
+  const yearSelect = $('year');
+
+  for(let i=0; i<24; i++){
+    const d = new Date(now.getFullYear(), now.getMonth()-i, 1);
+    const value = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0');
+    const option = document.createElement('option');
+    option.value = value;
+    option.textContent = d.toLocaleDateString('en-IN',{month:'long',year:'numeric'});
+    monthSelect.appendChild(option);
+  }
+
+  monthSelect.value = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0');
+
+  for(let y=now.getFullYear(); y>=now.getFullYear()-9; y--){
+    const option = document.createElement('option');
+    option.value = String(y);
+    option.textContent = String(y);
+    yearSelect.appendChild(option);
+  }
+
+  yearSelect.value = String(now.getFullYear());
+  $('date').value = now.toISOString().slice(0,10);
+
+  monthSelect.addEventListener('change', render);
+  yearSelect.addEventListener('change', renderYear);
+  $('search').addEventListener('input', renderRows);
+
+  $('filters').addEventListener('click', e => {
+    const b = e.target.closest('button[data-f]');
+    if(!b) return;
+    filter = b.dataset.f;
+    $('filters').querySelectorAll('button').forEach(x =>
+      x.classList.toggle('active', x === b)
+    );
+    renderRows();
+  });
+
+  render();
+})();
+
 >
